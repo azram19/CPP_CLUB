@@ -1,0 +1,196 @@
+The Club
+
+Deadline is Wednesday 22, 24:00. I won't check any code send to me after this time
+(I have to respect my private time, at least a bit).
+________________________________________________________________________________
+
+The Club
+It's yet another club in London. Tickets are awfully expensive, and drinks are 
+not cheap. There is terribly long queue, with staff fucking around and trying to
+keep the queue ordered by their secret standards (which are not known to people
+in the queue), and drug dealers trying to sell as much as they can, and policemen trying 
+to catch dealers, and staff trying to earn some money, and VIPs don't giving a fuck. 
+
+There are three places where people are - the club, the queue and the mob.
+People can move from from the mob to the queue, from the 
+queue to the club, and from the queue to the mob. 
+
+________________________________________________________________________________
+
+Rules of the club:
+1. There can be only `m` people at the same time.
+2. Ratio of women to men cannot be lower than 1 : 1 (there have to be more
+ women than men).
+3. VIPs can get into the club without waiting in the queue (as long as the first
+ two rules are being met)
+4. There can be only `o` Drug Dealers in the club.
+5. There can be `p` members of staff (ignoring first two rules, and this is
+the only case when the first two rules can be broken). 
+6. Only people below certain age limit, and older than 18 can get to the club.
+(age limit can change, and again it doesn't affect staff)
+7. Policeman (not Policewoman) can never get to the club. (He will be moved to 
+ the mob. She can get in :D)
+
+Rules of the queue:
+1. There can be only `n` people in the queue at the same time, all the rest have 
+to wait in the mob.
+2. A person can only get to the club if he/she wouldn't break any of club's rules.
+3. Drug Dealer can not be the first in the queue.
+4. There can not be more than 3 people of same gender in the first three places in the queue.
+5. If rule 5 is broken, the next person of opposite gender, should be moved to
+ the third place in the queue.
+6. Three person at the time try to move from the queue to the club.
+7. If a policeman (of both genders) gets a place next to a Drug Dealer, both 
+ the policeman and the drug dealer, are removed from the queue. (one caught 
+ the other, unless the other bribed the first) //it happens during position updating not ticking, ticking is about the club
+8. VIPs are moved to the beginning of the queue.
+
+Rules of the mob: 
+1. At the same time five people are moved from the mob to the queue, no more, no less.
+
+If nothing can be done, nothing happens.
+If someone has a chance to get to the club but is violating any of the rules, 
+ he/she is moved to the mob.
+
+________________________________________________________________________________
+
+
+What is going on?
+1. Order in the queue is updated
+ a. order by score is restored
+ b. VIPs are moved closer the entrance
+ c. drug dealers are trying to bribe policemen (only if they are standind next to one) 
+   - if they don't they are getting caught and both policeman and drug dealer are leaving
+   - if they do, this policeman can never catch this drug dealer again  
+ d. if the gender rule is being violated, person is moved
+ e. if a drug dealer is first in the queue, he is moved to the mob 
+2. Three people(closest to the entrance) from the queue are trying to get the club 
+ a. only people who doesn't break the rules gets in
+ b. those who break are moved to the mob
+ c. everyone else stays in the queue
+3. People enter the queue
+4. People are moved from the mob to the queue
+5. People enter the mob
+6. Event is executed
+7. Fun happens in the club.
+ a. staff get tips (or not)
+ b. dealers sell drugs
+ c. policemen catch dealers
+ d. time tick
+8. Back to 1.
+
+After all ticks are finished, earnings for every policeman, dd and staff should be printed
+
+________________________________________________________________________________
+
+
+#Events 
+#leave name // this one should trigger apropriate leave message (either club or mob or queue), person should be destoroyed, for policeman, staff, and drug dealer if they were in the club, earnings should be printed
+#enter name type score age gender args //args are type specific, triggers enter_mob message
+
+Messages
+{datetime} - {name} entered {club name}
+{datetime} - {name} left {club name}
+{datetime} - {name} entered the queue
+{datetime} - {name} left the queue
+{datetime} - {name} entered the mob
+{datetime} - {name} left the mob
+{datetime} - {club name} is full, no one more can enter
+
+Staff
+{datetime} - {name} entered {club name} and started working
+{datetime} - {name} got a tip of {how much} GBP
+{datetime} - {name} earned {money} GBP
+
+Policeman, Drug Dealer
+{datetime} - Officer {name} entered {club name}/the queue/the mob //Policeman
+{datetime} - Officer {name} left {club name}/the queue/the mob //Policeman
+{datetime} - {name} arrested {name} //Policeman
+{datetime} - {name} sneaked into {club name}
+{datetime} - {name} sold drugs to {name} for {price} //DD
+{datetime} - {name} gave a bribe of {how much he gave} GBP to {name} and has not been arrested  //DD
+{datetime} - {name} failed to bribe {name} //DD
+{datetime} - {name} earned {money} GBP 
+
+________________________________________________________________________________
+
+
+Types of people
+Client
+
+VIP(status)
+- has a field status, which express his Vip status
+
+Staff (tipChance)
+- has a field tipChance, which express how big is a chance for a tip
+- has a field earned, this is how much he earned from tips
+
+Policeman(catchChance, bribeLimit)
+- has a field bribeLimit, above which he/she will accept a bribe
+- has a field earned, this is how much he earned from bribes
+- has a field catchChance, his chance to capture someone inside a club 
+(she has to get there first)
+
+Drug Dealer(transactionChance, moneyToOffer)
+- has a field moneyToOffer, this is how much he can offer as a bribe. This is
+starting money, as he earns more he can offer more, but once offered, money is
+deducted from moneyToOffer.
+- has a field earned, this is how much he earned by selling drugs
+- has a filed transactionChance, this is his chance to sell sth
+
+Once DD, Policeman, or Stuff is inside the club, with every tick he/she
+should be tested if sth happened (bribe attempt, catch, tip)
+
+
+INPUT
+(number of events to read) (number of ticks to execute)
+(event description)
+...
+
+WTD?
+Your task is to simulate the queue, the club, and the mob, and print to output
+ messages according to events. You can modify provided files however you want,
+but your output must be the same as mine.
+
+1. Write class Fiver, which should be a template, and should store five 
+objects of the same type. Method get(n) should return reference to n-th object.
+ - it will be used to pass poeple from the mob to the queue.
+
+2. Write class DateTime, which will store current time. 
+ - Constructor should take string as an argument - "dd/mm/yyyy hh:mm:ss"
+ - Should also have function printDateTime(), which returns date and time in the same format as above
+
+3. Write class Person and write subclass for every type of person
+ - define enum Gender
+ - types: Policeman, Drug Dealer, Client, Staff, VIP
+
+4. Write class Event, which will hold information parsed from input.
+
+5. Write class Club.
+
+6. Write class Mob.
+
+7. Write class Queue.
+
+8. Finish clubMain.cpp 
+ - read in data
+ - check if your output is correct
+ - check for memory leaks (Valgrind --tool=memcheck ./clubMain < example.in)
+ - remove all the debugging/temporary code
+ - write comments
+ - check everything again
+
+9. Send
+10. Pray.
+
+
+Add. example
+
+Club: Evelyn, Maria, Steven, Lucas
+Queue: Dog
+Mob: Karina, Bob, Wulf
+
+
+
+
+

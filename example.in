@@ -1,0 +1,13 @@
+12 16
+#enter Peter client 4 20 m
+#enter Maria client 3 18 w
+#enter Angelina policeman 5 24 w 60 12
+#enter George drugDealer 6 29 m 43 11
+#enter Eveline staff 2 68 w 2
+#enter Bob drugDealer 7 35 m 62 41
+#enter Steve vip 9 21 m 3
+#enter Lucas vip 9 19 m 3
+#leave Peter
+#enter Karina client 1 81 w
+#enter Dog policeman 6 29 m 81 26
+#enter Wulf client 11 41 m
