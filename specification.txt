@@ -1,6 +1,6 @@
 The Club
 
-Deadline is Wednesday 22, 24:00. I won't check any code send to me after this time
+Deadline is on Wednesday, 24:00. I won't check any code send to me after this
 (I have to respect my private time, at least a bit).
 ________________________________________________________________________________
 
@@ -24,7 +24,7 @@ Rules of the club:
 3. VIPs can get into the club without waiting in the queue (as long as the first
  two rules are being met)
 4. There can be only `o` Drug Dealers in the club.
-5. There can be `p` members of staff (ignoring first two rules, and this is
+5. There can be only `p` members of staff (ignoring first two rules, and this is
 the only case when the first two rules can be broken). 
 6. Only people below certain age limit, and older than 18 can get to the club.
 (age limit can change, and again it doesn't affect staff)
@@ -51,7 +51,8 @@ Rules of the mob:
 If nothing can be done, nothing happens.
 If someone has a chance to get to the club but is violating any of the rules, 
  he/she is moved to the mob.
-
+Moving from the queue to the club, and from the mob to the queue is not the same
+as entering the club or entering the queue.
 ________________________________________________________________________________
 
 
@@ -79,7 +80,7 @@ What is going on?
  d. time tick
 8. Back to 1.
 
-After all ticks are finished, earnings for every policeman, dd and staff should be printed
+After all ticks are finished, earnings for every policeman, dd and staff in the club should be printed
 
 ________________________________________________________________________________
 
