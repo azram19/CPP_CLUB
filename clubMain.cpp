@@ -15,6 +15,7 @@ const int numberOfDrugDealers = 2;
 
 int main(){
 srand(seed);
+
 std::list<Event> events;
 
 Club theClub("Koko", sizeOfTheClub, sizeOfTheQueue, numberOfStaff, numberOfDrugDealers, "23/10/2011 01:00:00");
@@ -41,7 +42,8 @@ for(int i = 0; i < numberOfTicks; i++){
 
 	theClub.enter();
 		
-	theClub.funfunfun(events.pop_front());
+	theClub.funfunfun(events.front());
+	events.pop_front();
 	
 	theClub.tick(); //This is where everything in the club happens - tips, catching etc...
 }

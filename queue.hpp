@@ -3,6 +3,6 @@
 
 class Queue{
 
-}
+};
 
 #endif

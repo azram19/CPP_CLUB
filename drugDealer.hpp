@@ -11,6 +11,6 @@ class DrugDealer : public Person{
 	
 	private:
 		int transactionChance; //0 - 100
-}
+};
 
 #endif

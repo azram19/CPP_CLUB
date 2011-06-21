@@ -1,7 +1,12 @@
 #include "person.hpp"
+#include "gender.hpp"
+#include <string>
 
-Person::Person(string name){
+using namespace std;
+
+Person::Person(string name, int age){
 	this -> name = name;
+	this -> age = age;
 }
 
 string Person::getName(){

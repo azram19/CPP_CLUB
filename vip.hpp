@@ -3,4 +3,8 @@
 
 #include "person.hpp"
 
+class Vip : public Person{
+
+};
+
 #endif

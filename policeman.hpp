@@ -10,6 +10,6 @@ class Policeman : public Person{
 	
 	private:
 		int catchChance; //0 - 100
-}
+};
 
 #endif

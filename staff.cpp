@@ -1,5 +1,5 @@
-#include "person.hpp"
 #include "staff.hpp"
+#include <cstdlib>
 
 int Staff::getValueOfATip(){
 	return ((rand() % 10) + 1);

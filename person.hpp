@@ -1,6 +1,7 @@
 #ifndef INC_PERSON_H
 #define INC_PERSON_H
-#include<string>
+#include <string>
+#include "gender.hpp"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ class Person{
 	Person(string, int);
 	
 	string getName();
-	string getAge();
+	int getAge();
 	gender getGender();
 	
 	protected:
@@ -18,6 +19,6 @@ class Person{
 	string name;
 	int age;
 	gender m_gender;
-}
+};
 
 #endif

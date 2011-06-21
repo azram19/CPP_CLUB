@@ -1,6 +1,5 @@
-#include "person.hpp"
 #include "drugDealer.hpp"
-
+#include <cstdlib>
 int DrugDealer::getValueOfATransaction(){
 	return ((rand() % 91) + 10);
 }
