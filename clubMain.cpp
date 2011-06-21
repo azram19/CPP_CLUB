@@ -12,11 +12,12 @@ const int sizeOfTheQueue = 10;
 const int numberOfStaff = 1;
 const int numberOfDrugDealers = 2;
 
+using namespace std;
 
 int main(){
 srand(seed);
 
-std::list<Event> events;
+list<Event> events;
 
 Club theClub("Koko", sizeOfTheClub, sizeOfTheQueue, numberOfStaff, numberOfDrugDealers, "23/10/2011 01:00:00");
 
